@@ -1,647 +1,893 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="x-apple-disable-message-reformatting">
-  <title>Inside Wealth Cockpit – Volume 1, Issue 1</title>
-  <!--[if mso]>
-  <noscript><xml>
-    <o:OfficeDocumentSettings>
-      <o:PixelsPerInch>96</o:PixelsPerInch>
-    </o:OfficeDocumentSettings>
-  </xml></noscript>
-  <![endif]-->
+  <title>Synpulse – From Zurich to the World | 30 Years</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
-    img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
-    body { margin: 0; padding: 0; width: 100% !important; height: 100% !important; }
-
-    @media only screen and (max-width: 680px) {
-      .email-container { width: 100% !important; }
-      .stack-column { display: block !important; width: 100% !important; }
-      .stack-column-center { display: block !important; width: 100% !important; text-align: center !important; }
-      .mobile-padding { padding-left: 16px !important; padding-right: 16px !important; }
-      .mobile-hide { display: none !important; }
+    :root {
+      --orange: #F7682C;
+      --orange-alt: #f97123;
+      --blue-gray: #66798C;
+      --dark-navy: #394253;
+      --warm-white: #FFF7F5;
+      --white: #ffffff;
+      --font: 'Source Sans 3', 'Source Sans Pro', sans-serif;
     }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--warm-white);
+      color: var(--blue-gray);
+      overflow-x: hidden;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 5.6%;
+      background: transparent;
+      transition: background 0.3s;
+    }
+
+    nav.scrolled {
+      background: rgba(57, 66, 83, 0.95);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-logo .logo-dot {
+      color: var(--orange);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.88);
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--orange); }
+
+    /* ===== HERO ===== */
+    .hero {
+      width: 100%;
+      height: 100vh;
+      min-height: 620px;
+      position: relative;
+      overflow: hidden;
+      background: #1c1c1c;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* subtle dark vignette to ground the play button */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, transparent 40%, rgba(0,0,0,0.25) 100%);
+      pointer-events: none;
+    }
+
+    .hero-play {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      width: 204px;
+      height: 204px;
+      border-radius: 50%;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      background: rgba(45, 45, 45, 0.2);
+      border: 3px solid rgba(255,255,255,0.95);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .hero-play:hover {
+      transform: translate(-50%, -50%) scale(1.07);
+      background: rgba(247, 104, 44, 0.25);
+      border-color: white;
+    }
+
+    .hero-play svg {
+      margin-left: 8px; /* optical center the triangle */
+    }
+
+    /* Hero bottom gradient for depth */
+    .hero-bottom-fade {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(to bottom, transparent, rgba(28,28,28,0.4));
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ===== SHARED SECTION STYLES ===== */
+    .section-inner {
+      max-width: 1632px;
+      margin: 0 auto;
+    }
+
+    .title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .section-h2 {
+      font-size: clamp(36px, 3.3vw, 60px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--blue-gray);
+    }
+
+    .section-lead {
+      font-size: clamp(18px, 1.35vw, 24px);
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--blue-gray);
+      max-width: 1313px;
+    }
+
+    /* ===== SECTION 1: GROWTH STORY ===== */
+    .section-growth {
+      background: var(--warm-white);
+      padding: clamp(80px, 12vw, 220px) 5.3% 96px 5.6%;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+
+    /* Timeline card */
+    .timeline-card {
+      position: relative;
+      width: 100%;
+      height: 813px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: #e85d1a;
+    }
+
+    .timeline-card-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Orange gradient overlays that blend into the card */
+    .tl-grad-right {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 35.3%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(249,113,35,0), #f97123);
+      pointer-events: none;
+    }
+
+    .tl-grad-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 87.7%;
+      height: 38.4%;
+      background: linear-gradient(to bottom, rgba(249,113,35,0), #f97123);
+      pointer-events: none;
+    }
+
+    .tl-grad-glow {
+      position: absolute;
+      top: 41.8%;
+      left: 0;
+      width: 38.3%;
+      height: 38.4%;
+      background: linear-gradient(to bottom, rgba(249,113,35,0), #f97123);
+      filter: blur(49px);
+      border-radius: 87px;
+      pointer-events: none;
+    }
+
+    .anniv-logo {
+      position: absolute;
+      left: 4.6%;
+      bottom: 90px;
+      width: 15%;
+      max-width: 244px;
+      pointer-events: none;
+    }
+
+    /* Timeline items inside the card */
+    .tl-items-layer {
+      position: absolute;
+      inset: 0;
+    }
+
+    .tl-item {
+      position: absolute;
+      display: flex;
+      gap: 7px;
+    }
+
+    /* "normal" items: circle on top, content below */
+    .tl-item.normal {
+      align-items: flex-start;
+      flex-direction: row;
+    }
+
+    /* "inverted" items: circle at bottom, content above */
+    .tl-item.inverted {
+      align-items: flex-end;
+      flex-direction: row;
+    }
+
+    .tl-spine {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      width: 26px;
+      height: 170px;
+    }
+
+    .tl-spine.normal {
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .tl-spine.inverted {
+      flex-direction: column-reverse;
+      justify-content: flex-start;
+    }
+
+    .tl-circle {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--orange);
+      border: 2px solid white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tl-circle span {
+      font-size: 10px;
+      font-weight: 700;
+      color: white;
+      line-height: 1;
+    }
+
+    .tl-line {
+      width: 1px;
+      flex: 1;
+      background: rgba(255,255,255,0.55);
+    }
+
+    .tl-body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 0;
+      flex: 1;
+      height: 170px;
+    }
+
+    .tl-item.normal .tl-body {
+      padding-top: 18px;
+      justify-content: flex-start;
+    }
+
+    .tl-item.inverted .tl-body {
+      padding-bottom: 22px;
+      justify-content: flex-end;
+    }
+
+    .tl-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .tl-date {
+      font-size: 15px;
+      font-weight: 700;
+      color: white;
+      line-height: 1.1;
+    }
+
+    .tl-count {
+      font-size: 15px;
+      font-weight: 700;
+      color: white;
+      line-height: 1.1;
+    }
+
+    .tl-events {
+      list-style: disc;
+      padding-left: 18px;
+    }
+
+    .tl-events li {
+      font-size: 13px;
+      font-weight: 400;
+      color: white;
+      line-height: 1.35;
+      margin-bottom: 5px;
+    }
+
+    .tl-events li:last-child { margin-bottom: 0; }
+
+    /* ===== SECTION 2: GLOBAL FOOTPRINT ===== */
+    .section-map {
+      background: white;
+      padding: 96px 5.3% 96px 5.3%;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .map-frame {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .map-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ===== SECTION 3: ANNIVERSARY ===== */
+    .section-anniv {
+      background: var(--warm-white);
+      padding: 96px 5.3% 96px 5.6%;
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+
+    .stay-tuned-card {
+      width: 100%;
+      border-radius: 26px;
+      overflow: hidden;
+      aspect-ratio: 1626 / 813;
+      line-height: 0;
+    }
+
+    .stay-tuned-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ===== SECTION 5: CTA ===== */
+    .section-cta {
+      background: var(--warm-white);
+      padding: clamp(80px, 9vw, 164px) 5.3% clamp(80px, 6.8vw, 124px) 5.6%;
+    }
+
+    .cta-card {
+      background: var(--orange);
+      border-radius: 8px;
+      padding: 56px 108px 56px 96px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      min-height: 280px;
+    }
+
+    .cta-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      position: relative;
+      z-index: 2;
+      max-width: 560px;
+    }
+
+    .cta-text {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .cta-h2 {
+      font-size: clamp(32px, 2.7vw, 48px);
+      font-weight: 700;
+      line-height: 1.33;
+      color: white;
+    }
+
+    .cta-sub {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 24px;
+      color: white;
+    }
+
+    .cta-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      background: white;
+      border: none;
+      border-radius: 100px;
+      padding: 9px 20px;
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--dark-navy);
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 1.2px 3.6px rgba(0,0,0,0.1), 0 6.4px 14.4px rgba(0,0,0,0.13);
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12), 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .cta-photo {
+      position: absolute;
+      right: 0;
+      top: -60%;
+      height: 145%;
+      width: auto;
+      object-fit: contain;
+      pointer-events: none;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark-navy);
+      padding: 64px 5.6%;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 320px;
+    }
+
+    .footer-logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .footer-logo span { color: var(--orange); }
+
+    .footer-tagline {
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.6;
+    }
+
+    .footer-cols {
+      display: flex;
+      gap: 60px;
+    }
+
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.42);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer-col a {
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.78);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--orange); }
+
+    .footer-bottom {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-social a {
+      color: rgba(255,255,255,0.5);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-social a:hover { color: var(--orange); }
   </style>
 </head>
-<body style="margin:0; padding:0; background-color:#F3F3F4; font-family:'Outfit',Arial,Helvetica,sans-serif;">
+<body>
 
-<!-- PREHEADER (hidden preview text) -->
-<div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">
-  Your quarterly newsletter covering everything you need to know about Wealth Cockpit, powered by PULSE8 for Wealth.
-</div>
+  <!-- Navigation -->
+  <nav id="nav">
+    <a href="#" class="nav-logo">syn<span class="logo-dot" style="color:var(--orange)">pulse</span></a>
+    <ul class="nav-links">
+      <li><a href="#growth">Our Story</a></li>
+      <li><a href="#map">Global Footprint</a></li>
+      <li><a href="#anniversary">30 Years</a></li>
+      <li><a href="#cta">Careers</a></li>
+    </ul>
+  </nav>
 
-<!-- OUTER WRAPPER -->
-<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:#F3F3F4;">
-<tr><td align="center" style="padding:0;">
+  <!-- ─── HERO VIDEO ─── -->
+  <section class="hero" aria-label="Hero video">
+    <img
+      class="hero-bg"
+      src="https://www.figma.com/api/mcp/asset/ae10330f-b133-4650-a017-cb3937a4f5f8"
+      alt="Synpulse abstract orange flowing lines on dark background"
+    />
+    <div class="hero-bottom-fade"></div>
+    <button class="hero-play" aria-label="Play video">
+      <!-- Play triangle -->
+      <svg width="70" height="82" viewBox="0 0 70 82" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M68 37.268C70.6667 38.8168 70.6667 42.717 68 44.2659L4 81.4282C1.33333 82.977 0 81.0269 0 78.9293V3.60473C0 1.50711 1.33334 -0.443047 4 1.10584L68 37.268Z" fill="white"/>
+      </svg>
+    </button>
+  </section>
 
-<!-- EMAIL CONTAINER: 680px -->
-<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="680" class="email-container" style="max-width:680px; margin:0 auto;">
+  <!-- ─── SECTION 1: GROWTH STORY ─── -->
+  <section class="section-growth" id="growth" aria-labelledby="growth-title">
+    <div class="title-block">
+      <h2 class="section-h2" id="growth-title">From Zurich to the world — Our growth story 1996 to 2026</h2>
+      <p class="section-lead">What began as a small team with bold ideas has grown into a global consulting and technology partner shaping the future of financial services.</p>
+    </div>
 
-  <!-- ============================================================
-       HEADER BANNER
-       ============================================================ -->
-  <tr>
-    <td style="background-color:#121A21; padding:40px 44px; text-align:center; border-radius: 0 0 0 72px;">
-      <!-- Meta line -->
-      <p style="margin:0 0 12px; font-family:'Outfit',Arial,sans-serif; font-size:12px; font-weight:600; letter-spacing:0.96px; line-height:16px; color:#B476FC;">
-        Volume 1, Issue 1 &bull; Q1 2026 &bull; Internal
-      </p>
-      <!-- Divider -->
-      <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin:0 auto 12px;">
-        <tr><td style="width:16px; height:2px; background-color:#B476FC; border-radius:1px; font-size:0; line-height:0;">&nbsp;</td></tr>
-      </table>
-      <!-- Title -->
-      <h1 style="margin:0 0 10px; font-family:'Outfit',Arial,sans-serif; font-size:32px; font-weight:600; line-height:40px; color:#FFFFFF;">
-        Inside Wealth Cockpit
-      </h1>
-      <!-- Subtitle -->
-      <p style="margin:0 0 24px; font-family:'Outfit',Arial,sans-serif; font-size:12px; font-weight:400; line-height:16px; color:#B7B9BB; padding:0 60px;">
-        Your quarterly newsletter covering everything you need to know about Wealth Cockpit, powered by PULSE8 for Wealth.
-      </p>
-      <!-- Callout box -->
-      <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="564" align="center" style="max-width:564px; margin:0 auto;">
-        <tr>
-          <td style="background-color:rgba(180,118,252,0.15); border-radius:8px; padding:16px; text-align:center; border:1px solid rgba(180,118,252,0.2);">
-            <p style="margin:0; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#FFFFFF;">
-              In this first edition, we're excited to give you a closer look at the platform, share what's coming next, and highlight the developments shaping how we work with our clients.
-            </p>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
+    <!-- Timeline visual card -->
+    <div class="timeline-card" aria-label="Synpulse growth timeline from 1996 to 2026">
+      <img
+        class="timeline-card-bg"
+        src="https://www.figma.com/api/mcp/asset/cc3ebdfe-d491-467e-b479-bdc5c110247e"
+        alt="Orange spiral growth visualization"
+      />
 
-  <!-- ============================================================
-       SECTION 1: WHAT IS WEALTH COCKPIT
-       ============================================================ -->
-  <tr>
-    <td style="background-color:#F3F3F4; padding:32px 32px 0;" class="mobile-padding">
-      <h2 style="margin:0 0 16px; font-family:'Outfit',Arial,sans-serif; font-size:24px; line-height:32px; color:#121A21;">
-        <span style="font-weight:300;">What is </span><strong style="font-weight:700;">Wealth Cockpit?</strong>
-      </h2>
-      <!-- Highlight bar -->
-      <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:16px;">
-        <tr>
-          <td width="4" style="background-color:#B476FC;"></td>
-          <td style="background-color:#2F353A; padding:14px 16px;">
-            <p style="margin:0; font-family:'Outfit',Arial,sans-serif; font-size:12px; font-weight:600; line-height:16px; color:#F0F4FA;">
-              One platform for banks and EAMs to streamline advisory and improve client engagement.
-            </p>
-          </td>
-        </tr>
-      </table>
-      <!-- Body text -->
-      <p style="margin:0 0 12px; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#878A8D;">
-        Wealth Cockpit is our flagship wealth management proposition designed to provide a single, integrated platform for <strong style="font-weight:600; color:#121A21;">banks and external asset managers (EAMs)</strong> to streamline advisory workflows, gain deeper portfolio insights, and improve client engagement.
-      </p>
-      <p style="margin:0 0 24px; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#878A8D;">
-        Instead of switching between multiple systems to review portfolios, log interactions, or generate reports, users can access everything through one unified interface.
-      </p>
-    </td>
-  </tr>
+      <!-- Gradient overlays -->
+      <div class="tl-grad-right" aria-hidden="true"></div>
+      <div class="tl-grad-bottom" aria-hidden="true"></div>
+      <div class="tl-grad-glow" aria-hidden="true"></div>
 
-  <!-- CTA DARK BOX -->
-  <tr>
-    <td style="background-color:#F3F3F4; padding:0 32px 16px;" class="mobile-padding">
-      <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:#121A21; border-radius:12px;">
-        <tr>
-          <td style="padding:26px 20px; text-align:center;">
-            <p style="margin:0 0 20px; font-family:'Outfit',Arial,sans-serif; font-size:14px; font-weight:600; line-height:20px; color:#FFFFFF;">
-              Wealth Cockpit is available in two tailored offerings:
-            </p>
-            <!-- Two boxes side by side -->
-            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-              <tr>
-                <td width="50%" valign="top" class="stack-column" style="padding-right:8px;">
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); border-radius:12px;">
-                    <tr>
-                      <td style="padding:24px;">
-                        <a href="https://www.synpulse8.com/en/our-solutions/wealth-cockpit-banks" target="_blank" style="display:inline-block; padding:8px 12px; border-radius:8px; background-color:#B476FC; font-family:'Outfit',Arial,sans-serif; font-size:14px; font-weight:600; line-height:20px; color:#FFFFFF; text-decoration:none; margin-bottom:16px;">
-                          Wealth Cockpit For Banks
-                        </a>
-                        <p style="margin:16px 0 0; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#E7E8E8; text-align:left;">
-                          Designed for private banks and wealth managers, the platform provides dedicated views for both relationship managers (RMs) and end clients.
-                        </p>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-                <td width="50%" valign="top" class="stack-column" style="padding-left:8px;">
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); border-radius:12px;">
-                    <tr>
-                      <td style="padding:24px;">
-                        <a href="https://www.synpulse8.com/en/our-solutions/wealth-cockpit-eam" target="_blank" style="display:inline-block; padding:8px 12px; border-radius:8px; background-color:#B476FC; font-family:'Outfit',Arial,sans-serif; font-size:14px; font-weight:600; line-height:20px; color:#FFFFFF; text-decoration:none; margin-bottom:16px;">
-                          Wealth Cockpit for EAMs
-                        </a>
-                        <p style="margin:16px 0 0; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#E7E8E8; text-align:left;">
-                          Designed for EAMs who manage client portfolios across multiple custodians, consolidating data, monitoring performance, and streamlining reporting across different banking relationships.
-                        </p>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
+      <!-- 30th Anniversary logo -->
+      <img
+        class="anniv-logo"
+        src="https://www.figma.com/api/mcp/asset/639056bc-8893-4e3b-bedf-6586ac051cb7"
+        alt="Synpulse 30th anniversary"
+        aria-hidden="true"
+      />
 
-  <!-- ============================================================
-       SECTION: SUCCESS STORIES & TIMELINE
-       ============================================================ -->
-  <tr>
-    <td style="background-color:#F3F3F4; padding:32px 32px 16px;" class="mobile-padding">
-      <h2 style="margin:0 0 16px; font-family:'Outfit',Arial,sans-serif; font-size:24px; font-weight:700; line-height:32px; color:#121A21;">
-        Success stories in Q1 and what is planned for 2026
-      </h2>
-    </td>
-  </tr>
+      <!-- Timeline items layer -->
+      <div class="tl-items-layer" aria-hidden="true">
 
-  <!-- Timeline infographic -->
-  <tr>
-    <td style="background-color:#F3F3F4; padding:0 32px 24px;" class="mobile-padding">
-      <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:#0D1826; border-radius:8px;">
-        <tr>
-          <td style="padding:16px 24px;">
-            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-              <tr>
-                <!-- Q1 COLUMN -->
-                <td width="45%" valign="top" class="stack-column">
-                  <p style="margin:0 0 12px; font-family:'Outfit',Arial,sans-serif; font-size:12px; font-weight:600; color:#FFFFFF;">Q1</p>
-                  <!-- Q1 items -->
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:8px;">
-                    <tr>
-                      <td style="border:1px solid rgba(255,255,255,0.4); border-radius:6px; overflow:hidden;">
-                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"><tr>
-                          <td style="background-color:#FFFFFF; padding:6px; white-space:nowrap; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:600; color:#16A163;">&#9679; Live</td>
-                          <td style="background-color:rgba(255,255,255,0.15); padding:6px 8px; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:600; line-height:14px; color:#FFFFFF;">Go-live with Lumen Capital Investors</td>
-                        </tr></table>
-                      </td>
-                    </tr>
-                  </table>
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:8px;">
-                    <tr>
-                      <td style="border:1px solid rgba(255,255,255,0.4); border-radius:6px; overflow:hidden;">
-                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"><tr>
-                          <td style="background-color:#FFFFFF; padding:6px; white-space:nowrap; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:600; color:#16A163;">&#9679; Live</td>
-                          <td style="background-color:rgba(255,255,255,0.15); padding:6px 8px; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:600; line-height:14px; color:#FFFFFF;">Raffles Family Office Project kick off</td>
-                        </tr></table>
-                      </td>
-                    </tr>
-                  </table>
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:8px;">
-                    <tr>
-                      <td style="border:1px solid rgba(255,255,255,0.4); border-radius:6px; overflow:hidden;">
-                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"><tr>
-                          <td style="background-color:#FFFFFF; padding:6px; white-space:nowrap; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:600; color:#16A163;">&#9679; Live</td>
-                          <td style="background-color:rgba(255,255,255,0.15); padding:6px 8px; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:600; line-height:14px; color:#FFFFFF;">Quantive partners collaboration with Raffles Family Office and GoUpscale</td>
-                        </tr></table>
-                      </td>
-                    </tr>
-                  </table>
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:8px;">
-                    <tr>
-                      <td style="border:1px solid rgba(255,255,255,0.4); border-radius:6px; overflow:hidden;">
-                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"><tr>
-                          <td style="background-color:#FFFFFF; padding:6px; white-space:nowrap; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:600; color:#16A163;">&#9679; Live</td>
-                          <td style="background-color:rgba(255,255,255,0.15); padding:6px 8px;">
-                            <span style="display:inline-block; padding:2px 6px; border-radius:100px; background-color:#16A163; font-family:'Outfit',Arial,sans-serif; font-size:8px; font-weight:600; color:#FFFFFF; margin-bottom:4px;">New features</span><br>
-                            <span style="font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:600; line-height:14px; color:#FFFFFF;">K8 integration, Chicago Global integration</span>
-                          </td>
-                        </tr></table>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
+        <!-- Positions use % of design card (1626w × 813h) for fluid scaling -->
 
-                <!-- Q2 divider -->
-                <td width="10%" valign="top" style="text-align:center; opacity:0.3;" class="mobile-hide">
-                  <p style="margin:0; font-family:'Outfit',Arial,sans-serif; font-size:12px; font-weight:600; color:#FFFFFF;">Q2</p>
-                </td>
+        <!-- 1: 1996–1997 (circle top) -->
+        <div class="tl-item normal" style="left:38.9%; top:7.9%; max-width:12%;">
+          <div class="tl-spine normal"><div class="tl-circle"><span>1</span></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-meta"><div class="tl-date">1996 – 1997</div><div class="tl-count">Synpulsians: 14</div></div>
+            <ul class="tl-events">
+              <li>Establishment of Solution Providers and our office in Switzerland</li>
+              <li>Establishment of our Germany office</li>
+            </ul>
+          </div>
+        </div>
 
-                <!-- Q3 COLUMN -->
-                <td width="45%" valign="top" class="stack-column">
-                  <p style="margin:0 0 12px; font-family:'Outfit',Arial,sans-serif; font-size:12px; font-weight:600; color:#FFFFFF;">Q3</p>
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:8px;">
-                    <tr>
-                      <td style="border:1px solid rgba(255,255,255,0.4); border-radius:6px; overflow:hidden;">
-                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"><tr>
-                          <td style="background-color:#FFFFFF; padding:6px; white-space:nowrap; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:600; color:#E86427;">&#9632; Go Live</td>
-                          <td style="background-color:rgba(255,255,255,0.15); padding:6px 8px; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:600; line-height:14px; color:#FFFFFF;">Raffles Family Office</td>
-                        </tr></table>
-                      </td>
-                    </tr>
-                  </table>
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:8px;">
-                    <tr>
-                      <td style="border:1px solid rgba(255,255,255,0.4); border-radius:6px; overflow:hidden;">
-                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"><tr>
-                          <td style="background-color:#FFFFFF; padding:6px; white-space:nowrap; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:600; color:#186ADE;">&#9632; Coming soon</td>
-                          <td style="background-color:rgba(255,255,255,0.15); padding:6px 8px; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:600; line-height:14px; color:#FFFFFF;">Pre Trade Compliance Check</td>
-                        </tr></table>
-                      </td>
-                    </tr>
-                  </table>
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:8px;">
-                    <tr>
-                      <td style="border:1px solid rgba(255,255,255,0.4); border-radius:6px; overflow:hidden;">
-                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"><tr>
-                          <td style="background-color:#FFFFFF; padding:6px; white-space:nowrap; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:600; color:#186ADE;">&#9632; Coming soon</td>
-                          <td style="background-color:rgba(255,255,255,0.15); padding:6px 8px; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:600; line-height:14px; color:#FFFFFF;">Credit Journey</td>
-                        </tr></table>
-                      </td>
-                    </tr>
-                  </table>
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:8px;">
-                    <tr>
-                      <td style="border:1px solid rgba(255,255,255,0.4); border-radius:6px; overflow:hidden;">
-                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"><tr>
-                          <td style="background-color:#FFFFFF; padding:6px; white-space:nowrap; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:600; color:#186ADE;">&#9632; Coming soon</td>
-                          <td style="background-color:rgba(255,255,255,0.15); padding:6px 8px; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:600; line-height:14px; color:#FFFFFF;">Prospect Management 2.0</td>
-                        </tr></table>
-                      </td>
-                    </tr>
-                  </table>
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:8px;">
-                    <tr>
-                      <td style="border:1px solid rgba(255,255,255,0.4); border-radius:6px; overflow:hidden;">
-                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"><tr>
-                          <td style="background-color:#FFFFFF; padding:6px; white-space:nowrap; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:600; color:#186ADE;">&#9632; Coming soon</td>
-                          <td style="background-color:rgba(255,255,255,0.15); padding:6px 8px; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:600; line-height:14px; color:#FFFFFF;">AI Capability Expansion</td>
-                        </tr></table>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
+        <!-- 2: 2006 (circle top) -->
+        <div class="tl-item normal" style="left:25.6%; top:9.5%; max-width:11%;">
+          <div class="tl-spine normal"><div class="tl-circle"><span>2</span></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-meta"><div class="tl-date">2006</div><div class="tl-count">Synpulsians: 61</div></div>
+            <ul class="tl-events"><li>10-year milestone of Solution Providers</li></ul>
+          </div>
+        </div>
 
-  <!-- New features highlight bar + descriptions -->
-  <tr>
-    <td style="background-color:#F3F3F4; padding:0 32px 32px;" class="mobile-padding">
-      <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:16px;">
-        <tr>
-          <td width="4" style="background-color:#B476FC;"></td>
-          <td style="background-color:#2F353A; padding:14px 16px;">
-            <p style="margin:0; font-family:'Outfit',Arial,sans-serif; font-size:12px; font-weight:600; line-height:16px; color:#FFFFFF;">New features</p>
-          </td>
-        </tr>
-      </table>
-      <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="padding:0 16px;">
-        <tr>
-          <td style="padding-bottom:16px;">
-            <h3 style="margin:0 0 4px; font-family:'Outfit',Arial,sans-serif; font-size:14px; font-weight:600; line-height:20px; color:#121A21;">K8 integration,</h3>
-            <p style="margin:0; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#878A8D;">This initiative involves the deployment of an advanced AI agent that will be thoroughly integrated into current functionalities of the Wealth Cockpit platform. It ensures seamless interaction between the AI agent and the existing system, enhancing user experience by leveraging the full capabilities of artificial intelligence within the Wealth Cockpit environment.</p>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <h3 style="margin:0 0 4px; font-family:'Outfit',Arial,sans-serif; font-size:14px; font-weight:600; line-height:20px; color:#121A21;">Chicago Global integration</h3>
-            <p style="margin:0; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#878A8D;">This component centers on delivering professional, high-quality market research data and comprehensive reports. By offering in-depth analyses and detailed market intelligence, this integration helps users on decision making and strategic planning, ensuring access to the latest and most relevant market information.</p>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
+        <!-- 3: 2007 (circle top) -->
+        <div class="tl-item normal" style="left:13.6%; top:14.4%; max-width:10%;">
+          <div class="tl-spine normal"><div class="tl-circle"><span>3</span></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-meta"><div class="tl-date">2007</div><div class="tl-count">Synpulsians: 103</div></div>
+            <ul class="tl-events"><li>Establishment of our Singapore office</li></ul>
+          </div>
+        </div>
 
-  <!-- ============================================================
-       SECTION 4: WHAT THE PLATFORM DELIVERS
-       ============================================================ -->
-  <tr>
-    <td style="background-color:#121A21; padding:32px 32px 16px;" class="mobile-padding">
-      <h2 style="margin:0 0 12px; font-family:'Outfit',Arial,sans-serif; font-size:24px; line-height:32px; color:#FFFFFF;">
-        <span style="font-weight:300;">What the </span><strong style="font-weight:700;">platform delivers today</strong>
-      </h2>
-      <p style="margin:0 0 16px; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#878A8D;">
-        Wealth Cockpit covers the full spectrum of what RMs or EAMs need to manage their workflows effectively, while giving clients the insights they need to feel confident about their wealth.
-      </p>
+        <!-- 4: 2012 (circle bottom) -->
+        <div class="tl-item inverted" style="left:14.0%; top:43.3%; max-width:11%;">
+          <div class="tl-spine inverted"><div class="tl-circle"><span>4</span></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-meta"><div class="tl-date">2012</div><div class="tl-count">Synpulsians: 184</div></div>
+            <ul class="tl-events"><li>Establishment of our United States office</li></ul>
+          </div>
+        </div>
 
-      <!-- Lifecycle highlight bar -->
-      <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:16px;">
-        <tr>
-          <td width="4" style="background-color:#B476FC;"></td>
-          <td style="background-color:#2F353A; padding:14px 16px;">
-            <p style="margin:0; font-family:'Outfit',Arial,sans-serif; font-size:12px; font-weight:600; line-height:16px; color:#FFFFFF;">The Wealth Management Lifecycle</p>
-          </td>
-        </tr>
-      </table>
+        <!-- 5: 2015 (circle bottom) -->
+        <div class="tl-item inverted" style="left:26.2%; top:47.6%; max-width:12%;">
+          <div class="tl-spine inverted"><div class="tl-circle"><span>5</span></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-meta"><div class="tl-date">2015</div><div class="tl-count">Synpulsians: 216</div></div>
+            <ul class="tl-events">
+              <li>Establishment of our Hong Kong office</li>
+              <li>Rebranding from Solution Providers to Synpulse</li>
+            </ul>
+          </div>
+        </div>
 
-      <!-- Lifecycle diagram -->
-      <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:#0D1826; border-radius:8px; margin-bottom:16px;">
-        <tr>
-          <td style="padding:20px; text-align:center;">
-            <!-- Row 1: 1-4 -->
-            <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin:0 auto 10px;">
-              <tr>
-                <td style="padding:6px 14px; border:1px solid rgba(180,118,252,0.6); border-radius:24px; background-color:rgba(255,255,255,0.15);">
-                  <span style="display:inline-block; width:18px; height:18px; border-radius:50%; background-color:#B476FC; color:#FFFFFF; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:700; line-height:18px; text-align:center; vertical-align:middle;">1</span>
-                  <span style="font-family:'Outfit',Arial,sans-serif; font-size:12px; font-weight:600; color:#FFFFFF; vertical-align:middle; margin-left:6px;">Onboard</span>
-                </td>
-                <td style="padding:0 6px; font-family:'Outfit',Arial,sans-serif; font-size:18px; color:#B476FC;">&rsaquo;</td>
-                <td style="padding:6px 14px; border:1px solid rgba(180,118,252,0.6); border-radius:24px; background-color:rgba(255,255,255,0.15);">
-                  <span style="display:inline-block; width:18px; height:18px; border-radius:50%; background-color:#B476FC; color:#FFFFFF; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:700; line-height:18px; text-align:center; vertical-align:middle;">2</span>
-                  <span style="font-family:'Outfit',Arial,sans-serif; font-size:12px; font-weight:600; color:#FFFFFF; vertical-align:middle; margin-left:6px;">Understand</span>
-                </td>
-                <td style="padding:0 6px; font-family:'Outfit',Arial,sans-serif; font-size:18px; color:#B476FC;">&rsaquo;</td>
-                <td style="padding:6px 14px; border:1px solid rgba(180,118,252,0.6); border-radius:24px; background-color:rgba(255,255,255,0.15);">
-                  <span style="display:inline-block; width:18px; height:18px; border-radius:50%; background-color:#B476FC; color:#FFFFFF; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:700; line-height:18px; text-align:center; vertical-align:middle;">3</span>
-                  <span style="font-family:'Outfit',Arial,sans-serif; font-size:12px; font-weight:600; color:#FFFFFF; vertical-align:middle; margin-left:6px;">Propose</span>
-                </td>
-                <td style="padding:0 6px; font-family:'Outfit',Arial,sans-serif; font-size:18px; color:#B476FC;">&rsaquo;</td>
-                <td style="padding:6px 14px; border:1px solid rgba(180,118,252,0.6); border-radius:24px; background-color:rgba(255,255,255,0.15);">
-                  <span style="display:inline-block; width:18px; height:18px; border-radius:50%; background-color:#B476FC; color:#FFFFFF; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:700; line-height:18px; text-align:center; vertical-align:middle;">4</span>
-                  <span style="font-family:'Outfit',Arial,sans-serif; font-size:12px; font-weight:600; color:#FFFFFF; vertical-align:middle; margin-left:6px;">Execute</span>
-                </td>
-              </tr>
-            </table>
-            <!-- Connector arrows -->
-            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="80%" align="center" style="margin:0 auto 10px;">
-              <tr>
-                <td style="font-family:'Outfit',Arial,sans-serif; font-size:14px; color:#B476FC; text-align:left; padding-left:40px;">&uarr;</td>
-                <td style="font-family:'Outfit',Arial,sans-serif; font-size:14px; color:#B476FC; text-align:right; padding-right:40px;">&darr;</td>
-              </tr>
-            </table>
-            <!-- Row 2: 7-5 -->
-            <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin:0 auto;">
-              <tr>
-                <td style="padding:6px 14px; border:1px solid rgba(180,118,252,0.6); border-radius:24px; background-color:rgba(255,255,255,0.15);">
-                  <span style="display:inline-block; width:18px; height:18px; border-radius:50%; background-color:#B476FC; color:#FFFFFF; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:700; line-height:18px; text-align:center; vertical-align:middle;">7</span>
-                  <span style="font-family:'Outfit',Arial,sans-serif; font-size:12px; font-weight:600; color:#FFFFFF; vertical-align:middle; margin-left:6px;">Inform</span>
-                </td>
-                <td style="padding:0 6px; font-family:'Outfit',Arial,sans-serif; font-size:18px; color:#B476FC;">&lsaquo;</td>
-                <td style="padding:6px 14px; border:1px solid rgba(180,118,252,0.6); border-radius:24px; background-color:rgba(255,255,255,0.15);">
-                  <span style="display:inline-block; width:18px; height:18px; border-radius:50%; background-color:#B476FC; color:#FFFFFF; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:700; line-height:18px; text-align:center; vertical-align:middle;">6</span>
-                  <span style="font-family:'Outfit',Arial,sans-serif; font-size:12px; font-weight:600; color:#FFFFFF; vertical-align:middle; margin-left:6px;">Monitor</span>
-                </td>
-                <td style="padding:0 6px; font-family:'Outfit',Arial,sans-serif; font-size:18px; color:#B476FC;">&lsaquo;</td>
-                <td style="padding:6px 14px; border:1px solid rgba(180,118,252,0.6); border-radius:24px; background-color:rgba(255,255,255,0.15);">
-                  <span style="display:inline-block; width:18px; height:18px; border-radius:50%; background-color:#B476FC; color:#FFFFFF; font-family:'Outfit',Arial,sans-serif; font-size:10px; font-weight:700; line-height:18px; text-align:center; vertical-align:middle;">5</span>
-                  <span style="font-family:'Outfit',Arial,sans-serif; font-size:12px; font-weight:600; color:#FFFFFF; vertical-align:middle; margin-left:6px;">Analyse</span>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
+        <!-- 6: 2016 (circle top) -->
+        <div class="tl-item normal" style="left:52.3%; top:23.4%; max-width:11%;">
+          <div class="tl-spine normal"><div class="tl-circle"><span>6</span></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-meta"><div class="tl-date">2016</div><div class="tl-count">Synpulsians: 256</div></div>
+            <ul class="tl-events">
+              <li>Establishment of our United Kingdom office</li>
+              <li>20-years milestone of Synpulse</li>
+            </ul>
+          </div>
+        </div>
 
-      <p style="margin:0 0 24px; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#B7B9BB;">
-        Each stage has dedicated modules, from digital onboarding and KYC to order management and trade execution, and can be deployed independently, without a full system overhaul.
-      </p>
+        <!-- 7: 2018 (circle top) -->
+        <div class="tl-item normal" style="left:66.7%; top:24.4%; max-width:11%;">
+          <div class="tl-spine normal"><div class="tl-circle"><span>7</span></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-meta"><div class="tl-date">2018</div><div class="tl-count">Synpulsians: 392</div></div>
+            <ul class="tl-events"><li>Establishment of our Australia and Philippines offices</li></ul>
+          </div>
+        </div>
 
-      <!-- Key capabilities highlight bar -->
-      <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:16px;">
-        <tr>
-          <td width="4" style="background-color:#B476FC;"></td>
-          <td style="background-color:#2F353A; padding:14px 16px;">
-            <p style="margin:0; font-family:'Outfit',Arial,sans-serif; font-size:12px; font-weight:600; line-height:16px; color:#FFFFFF;">Key capabilities</p>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
+        <!-- 8: 2019–2021 (circle top) -->
+        <div class="tl-item normal" style="left:81.0%; top:32.7%; max-width:14%;">
+          <div class="tl-spine normal"><div class="tl-circle"><span>8</span></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-meta"><div class="tl-date">2019 – 2021</div><div class="tl-count">Synpulsians: 716</div></div>
+            <ul class="tl-events"><li>Establishment of our Indonesia, Slovakia, India and Thailand offices</li></ul>
+          </div>
+        </div>
 
-  <!-- Capabilities grid (2-column table rows) -->
-  <tr>
-    <td style="background-color:#121A21; padding:0 32px;" class="mobile-padding">
-      <!-- Row 1 -->
-      <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:16px;">
-        <tr>
-          <td width="50%" valign="top" class="stack-column" style="padding-right:8px;">
-            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:#FFFFFF; border-radius:12px;">
-              <tr>
-                <td style="padding:20px;">
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr>
-                    <td width="36" valign="top" style="padding-right:12px;">
-                      <div style="width:36px; height:36px; border-radius:6px; background-color:#B476FC; text-align:center; line-height:36px; font-size:16px; color:#FFFFFF;">&#9888;</div>
-                    </td>
-                    <td valign="top">
-                      <h4 style="margin:0 0 4px; font-family:'Outfit',Arial,sans-serif; font-size:14px; font-weight:600; line-height:20px; color:#121A21;">Proactive client alerts</h4>
-                      <p style="margin:0; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#878A8D;">RMs get notified when something needs their attention before the client has to ask.</p>
-                    </td>
-                  </tr></table>
-                </td>
-              </tr>
-            </table>
-          </td>
-          <td width="50%" valign="top" class="stack-column" style="padding-left:8px;">
-            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:#FFFFFF; border-radius:12px;">
-              <tr>
-                <td style="padding:20px;">
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr>
-                    <td width="36" valign="top" style="padding-right:12px;">
-                      <div style="width:36px; height:36px; border-radius:6px; background-color:#B476FC; text-align:center; line-height:36px; font-size:16px; color:#FFFFFF;">&#9650;</div>
-                    </td>
-                    <td valign="top">
-                      <h4 style="margin:0 0 4px; font-family:'Outfit',Arial,sans-serif; font-size:14px; font-weight:600; line-height:20px; color:#121A21;">Portfolio analytics</h4>
-                      <p style="margin:0; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#878A8D;">Performance reporting, risk exposure, and health checks, all in one place.</p>
-                    </td>
-                  </tr></table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-      <!-- Row 2 -->
-      <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:16px;">
-        <tr>
-          <td width="50%" valign="top" class="stack-column" style="padding-right:8px;">
-            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:#FFFFFF; border-radius:12px;">
-              <tr>
-                <td style="padding:20px;">
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr>
-                    <td width="36" valign="top" style="padding-right:12px;">
-                      <div style="width:36px; height:36px; border-radius:6px; background-color:#B476FC; text-align:center; line-height:36px; font-size:16px; color:#FFFFFF;">&#10024;</div>
-                    </td>
-                    <td valign="top">
-                      <h4 style="margin:0 0 4px; font-family:'Outfit',Arial,sans-serif; font-size:14px; font-weight:600; line-height:20px; color:#121A21;">AI-driven suggestions</h4>
-                      <p style="margin:0; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#878A8D;">Smart portfolio strategies surface opportunities tailored to each client's profile.</p>
-                    </td>
-                  </tr></table>
-                </td>
-              </tr>
-            </table>
-          </td>
-          <td width="50%" valign="top" class="stack-column" style="padding-left:8px;">
-            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:#FFFFFF; border-radius:12px;">
-              <tr>
-                <td style="padding:20px;">
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr>
-                    <td width="36" valign="top" style="padding-right:12px;">
-                      <div style="width:36px; height:36px; border-radius:6px; background-color:#B476FC; text-align:center; line-height:36px; font-size:16px; color:#FFFFFF;">&#43;</div>
-                    </td>
-                    <td valign="top">
-                      <h4 style="margin:0 0 4px; font-family:'Outfit',Arial,sans-serif; font-size:14px; font-weight:600; line-height:20px; color:#121A21;">Holistic financial planning</h4>
-                      <p style="margin:0; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#878A8D;">A full picture of a client's financial life, not just the assets we manage.</p>
-                    </td>
-                  </tr></table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-      <!-- Row 3 -->
-      <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom:32px;">
-        <tr>
-          <td width="50%" valign="top" class="stack-column" style="padding-right:8px;">
-            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:#FFFFFF; border-radius:12px;">
-              <tr>
-                <td style="padding:20px;">
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr>
-                    <td width="36" valign="top" style="padding-right:12px;">
-                      <div style="width:36px; height:36px; border-radius:6px; background-color:#B476FC; text-align:center; line-height:36px; font-size:16px; color:#FFFFFF;">&#8635;</div>
-                    </td>
-                    <td valign="top">
-                      <h4 style="margin:0 0 4px; font-family:'Outfit',Arial,sans-serif; font-size:14px; font-weight:600; line-height:20px; color:#121A21;">360-degree client view</h4>
-                      <p style="margin:0; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#878A8D;">Everything about a client is on one screen, so there's no need to switch tabs.</p>
-                    </td>
-                  </tr></table>
-                </td>
-              </tr>
-            </table>
-          </td>
-          <td width="50%" valign="top" class="stack-column" style="padding-left:8px;">
-            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:#FFFFFF; border-radius:12px; border:1px solid #B476FC;">
-              <tr>
-                <td style="padding:20px;">
-                  <span style="display:inline-block; padding:2px 8px; border-radius:100px; background-color:#E86427; font-family:'Outfit',Arial,sans-serif; font-size:8px; font-weight:600; color:#FFFFFF; margin-bottom:8px;">Coming soon</span>
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin-top:8px;"><tr>
-                    <td width="36" valign="top" style="padding-right:12px;">
-                      <div style="width:36px; height:36px; border-radius:6px; background-color:#B476FC; text-align:center; line-height:36px; font-size:16px; color:#FFFFFF;">&#9733;</div>
-                    </td>
-                    <td valign="top">
-                      <h4 style="margin:0 0 4px; font-family:'Outfit',Arial,sans-serif; font-size:14px; font-weight:600; line-height:20px; color:#121A21;">KYC and Onboarding</h4>
-                      <p style="margin:0; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#878A8D;">End to end onboarding process and workflow capabilities to improve overall user experience</p>
-                    </td>
-                  </tr></table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
+        <!-- 9: 2022 (circle bottom) -->
+        <div class="tl-item inverted" style="left:72.4%; top:66.2%; max-width:13%;">
+          <div class="tl-spine inverted"><div class="tl-circle"><span>9</span></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-meta"><div class="tl-date">2022</div><div class="tl-count">Synpulsians: 1,171</div></div>
+            <ul class="tl-events">
+              <li>Establishment of our Canada, Taipei and United Arab Emirates offices</li>
+              <li>Official launch of our tech arm, Synpulse8</li>
+            </ul>
+          </div>
+        </div>
 
-  <!-- ============================================================
-       SECTION 5: WHAT'S NEXT
-       ============================================================ -->
-  <tr>
-    <td style="background-color:#F3F3F4; padding:32px 32px 8px; text-align:center;" class="mobile-padding">
-      <h2 style="margin:0 0 8px; font-family:'Outfit',Arial,sans-serif; font-size:24px; font-weight:700; line-height:32px; color:#B476FC;">What&#8217;s next?</h2>
-      <p style="margin:0; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#878A8D;">Coming up in the next edition:</p>
-    </td>
-  </tr>
-  <tr>
-    <td style="background-color:#F3F3F4; padding:16px 32px 32px;" class="mobile-padding">
-      <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-        <tr>
-          <td width="33%" valign="top" class="stack-column" style="padding-right:8px;">
-            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:#FFFFFF; border:1px solid #B476FC; border-radius:8px;">
-              <tr>
-                <td style="padding:24px 20px;">
-                  <div style="width:32px; height:32px; border-radius:5px; background-color:#B476FC; text-align:center; line-height:32px; font-size:14px; color:#FFFFFF; margin-bottom:12px;">&#9650;</div>
-                  <p style="margin:0; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#2F353A;">Q2 feature releases, with practical walkthroughs for clients and RMs</p>
-                </td>
-              </tr>
-            </table>
-          </td>
-          <td width="33%" valign="top" class="stack-column" style="padding:0 4px;">
-            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:#FFFFFF; border:1px solid #B476FC; border-radius:8px;">
-              <tr>
-                <td style="padding:24px 20px;">
-                  <div style="width:32px; height:32px; border-radius:5px; background-color:#B476FC; text-align:center; line-height:32px; font-size:14px; color:#FFFFFF; margin-bottom:12px;">&#128065;</div>
-                  <p style="margin:0; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#2F353A;">A deep dive into AI Capabilities (K8)</p>
-                </td>
-              </tr>
-            </table>
-          </td>
-          <td width="33%" valign="top" class="stack-column" style="padding-left:8px;">
-            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:#FFFFFF; border:1px solid #B476FC; border-radius:8px;">
-              <tr>
-                <td style="padding:24px 20px;">
-                  <div style="width:32px; height:32px; border-radius:5px; background-color:#B476FC; text-align:center; line-height:32px; font-size:14px; color:#FFFFFF; margin-bottom:12px;">&#9733;</div>
-                  <p style="margin:0; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#2F353A;">Our first client success story</p>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
+        <!-- 10: 2023 (circle bottom) -->
+        <div class="tl-item inverted" style="left:56.0%; top:69.7%; max-width:12%;">
+          <div class="tl-spine inverted"><div class="tl-circle"><span>10</span></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-meta"><div class="tl-date">2023</div><div class="tl-count">Synpulsians: 1,205</div></div>
+            <ul class="tl-events"><li>Establishment of our Malaysia office</li></ul>
+          </div>
+        </div>
 
-  <!-- ============================================================
-       SECTION 6: GET INVOLVED
-       ============================================================ -->
-  <tr>
-    <td style="background-color:#121A21; padding:40px 32px; text-align:center; border-radius:72px 0 0 0;" class="mobile-padding">
-      <p style="margin:0 0 8px; font-family:'Outfit',Arial,sans-serif; font-size:12px; font-weight:600; letter-spacing:0.96px; line-height:16px; color:#B476FC;">GET INVOLVED</p>
-      <h2 style="margin:0 0 8px; font-family:'Outfit',Arial,sans-serif; font-size:20px; line-height:32px; color:#FFFFFF;">
-        <span style="font-weight:300;">Want to </span><strong style="font-weight:700;">learn more about Wealth Cockpit</strong> <span style="font-weight:300;">or share your ideas?</span>
-      </h2>
-      <p style="margin:0 0 20px; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#B7B9BB;">
-        We're always looking for feedback from across the organisation. If you have suggestions, insights, or topics you'd like us to cover in future editions of this newsletter, we'd love to hear from you.
-      </p>
-      <!-- CTA Buttons -->
-      <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin:0 auto;">
-        <tr>
-          <td style="padding-right:8px;">
-            <a href="#" target="_blank" style="display:inline-block; padding:8px 16px; border-radius:8px; background-color:#FFFFFF; font-family:'Outfit',Arial,sans-serif; font-size:12px; font-weight:600; line-height:16px; color:#121A21; text-decoration:none;">Share your feedback</a>
-          </td>
-          <td style="padding-left:8px;">
-            <a href="#" target="_blank" style="display:inline-block; padding:8px 16px; border-radius:8px; background-color:#B476FC; font-family:'Outfit',Arial,sans-serif; font-size:12px; font-weight:600; line-height:16px; color:#FFFFFF; text-decoration:none;">Connect with the team</a>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
+        <!-- 11: 2026 (circle bottom) -->
+        <div class="tl-item inverted" style="left:39.7%; top:69.5%; max-width:13%;">
+          <div class="tl-spine inverted"><div class="tl-circle"><span>11</span></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-meta"><div class="tl-date">2026</div><div class="tl-count">Synpulsians: 1,248</div></div>
+            <ul class="tl-events"><li>Celebrating our 30-year milestone of growth, persistence and of always "Raising The Bar"</li></ul>
+          </div>
+        </div>
 
-  <!-- ============================================================
-       FOOTER
-       ============================================================ -->
-  <tr>
-    <td style="background-color:#1a0a30; padding:24px 32px;" class="mobile-padding">
-      <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-        <tr>
-          <td valign="top" style="text-align:left;">
-            <img src="https://www.figma.com/api/mcp/asset/9918c7f9-b0b1-4ace-9604-06fc31a58cac" alt="Wealth Cockpit" width="130" height="18" style="display:block; margin-bottom:4px; width:130px; height:auto;">
-            <p style="margin:0; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#FFFFFF;">
-              by <img src="https://www.figma.com/api/mcp/asset/e4ca7b55-b7cf-4263-b503-0f7ca59dd9be" alt="Synpulse8" width="54" height="12" style="display:inline; vertical-align:middle; width:54px; height:auto;">
-            </p>
-          </td>
-          <td valign="top" style="text-align:right;">
-            <p style="margin:0 0 4px; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#FFFFFF;">Volume 1, Issue 1 &bull; Q1 2026 &bull; Internal</p>
-            <p style="margin:0; font-family:'Outfit',Arial,sans-serif; font-size:12px; line-height:16px; color:#FFFFFF;">
-              &#9993; <a href="mailto:wealthcockpit@synpulse.com" style="color:#FFFFFF; text-decoration:underline;">wealthcockpit@synpulse.com</a>
-            </p>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
+      </div><!-- /tl-items-layer -->
+    </div><!-- /timeline-card -->
+  </section>
 
-</table>
-<!-- /EMAIL CONTAINER -->
+  <!-- ─── SECTION 2: GLOBAL FOOTPRINT ─── -->
+  <section class="section-map" id="map" aria-labelledby="map-title">
+    <div class="title-block">
+      <h2 class="section-h2" id="map-title">Our world, your markets — global footprint</h2>
+      <p class="section-lead">Wherever financial services transform, we're there — helping clients accelerate change, digitise operations and build what's next.</p>
+    </div>
+    <div class="map-frame">
+      <img
+        src="https://www.figma.com/api/mcp/asset/635627d1-9bf5-43b1-b4d5-ff279616c3c2"
+        alt="World map showing Synpulse office locations across Europe, Asia-Pacific, Americas and Middle East"
+        loading="lazy"
+      />
+    </div>
+  </section>
 
-</td></tr>
-</table>
-<!-- /OUTER WRAPPER -->
+  <!-- ─── SECTION 3: ANNIVERSARY ─── -->
+  <section class="section-anniv" id="anniversary" aria-labelledby="anniv-title">
+    <div class="title-block">
+      <h2 class="section-h2" id="anniv-title">Global anniversary — 8 celebrations. One spirit.</h2>
+      <p class="section-lead">Eight cities. One global moment. Across the world, our teams came together with energy, gratitude, and a spirited splash of orange. Same day, same feeling — connected across time zones. With a global wave and cheer, we toasted to 30 years of Synpulse — and to the many years of raising the bar still ahead.</p>
+    </div>
+    <div class="stay-tuned-card">
+      <img
+        src="https://www.figma.com/api/mcp/asset/1ab4db9b-4401-4111-b00e-1d02f8842dac"
+        alt="Stay tuned — global celebration video coming soon"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <!-- ─── SECTION 5: CTA ─── -->
+  <section class="section-cta" id="cta" aria-labelledby="cta-title">
+    <div class="cta-card">
+      <div class="cta-inner">
+        <div class="cta-text">
+          <h2 class="cta-h2" id="cta-title">Work with us. Grow with us.<br>Shape what's next.</h2>
+          <p class="cta-sub">Follow our journey — and see how we continue to raise the bar</p>
+        </div>
+        <div class="cta-btns">
+          <a href="https://www.linkedin.com/company/synpulse" target="_blank" rel="noopener" class="cta-btn">Our LinkedIn</a>
+          <a href="#" class="cta-btn">Contact Us</a>
+          <a href="#" class="cta-btn">Careers</a>
+        </div>
+      </div>
+      <img
+        class="cta-photo"
+        src="https://www.figma.com/api/mcp/asset/cdfeebd1-b9bc-4bfe-aafd-a84f8aa6a8d3"
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer aria-label="Site footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">syn<span>pulse</span></div>
+        <p class="footer-tagline">Global consulting and technology partner shaping the future of financial services since 1996.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our History</a></li>
+            <li><a href="#">Leadership</a></li>
+            <li><a href="#">Synpulse8</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Expertise</h4>
+          <ul>
+            <li><a href="#">Strategy &amp; Management</a></li>
+            <li><a href="#">Technology</a></li>
+            <li><a href="#">Risk &amp; Compliance</a></li>
+            <li><a href="#">Operations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Media &amp; Press</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Insights</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Synpulse. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Imprint</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav on scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    // Play button — no-op placeholder
+    document.querySelector('.hero-play').addEventListener('click', () => {
+      alert('Video player would open here.');
+    });
+  </script>
 
 </body>
 </html>

@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synpulse8 - About Us</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Pro+Text:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-fill: #fff;
+            --color-fill-secondary: #f5f5f7;
+            --color-fill-tertiary: #fbfbfd;
+            --color-text: #1d1d1f;
+            --color-text-secondary: #6e6e73;
+            --color-link: #0066cc;
+            --color-link-hover: #004499;
+            --color-border: #d2d2d7;
+            --color-accent: #0071e3;
+            --color-accent-hover: #0077ed;
+            --nav-height: 52px;
+            --section-padding: 100px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: var(--color-text);
+            background: var(--color-fill);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Navigation */
+        .global-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(251, 251, 253, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .nav-content {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-size: 21px;
+            font-weight: 600;
+            color: var(--color-text);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-logo span {
+            color: var(--color-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-text);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(180deg, #000 0%, #1a1a2e 100%);
+            color: #fff;
+            text-align: center;
+            padding: 120px 22px 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(0, 113, 227, 0.15) 0%, transparent 60%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        .hero-eyebrow {
+            font-size: 17px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 12px;
+            letter-spacing: 0.02em;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #a8c8ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 21px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 36px;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 17px;
+            font-weight: 400;
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .hero-cta:hover {
+            color: var(--color-accent-hover);
+        }
+
+        .hero-cta::after {
+            content: '›';
+            font-size: 20px;
+            transition: transform 0.2s;
+        }
+
+        .hero-cta:hover::after {
+            transform: translateX(3px);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: var(--section-padding) 22px;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .section-full {
+            padding: var(--section-padding) 0;
+        }
+
+        .section-gray {
+            background: var(--color-fill-secondary);
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-heading h2 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .section-heading p {
+            font-size: 19px;
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* Stats Banner */
+        .stats-banner {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--color-border);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+
+        .stat-item {
+            background: var(--color-fill);
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--color-accent);
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--color-fill);
+            border-radius: 20px;
+            padding: 40px 30px;
+            border: 1px solid var(--color-border);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #0071e3, #40a0ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .card-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: #fff;
+        }
+
+        .card h3 {
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
+        }
+
+        .card p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+        }
+
+        /* Values Section */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .value-card {
+            background: var(--color-fill-tertiary);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid var(--color-border);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .value-emoji {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+
+        .value-card h4 {
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .value-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+        }
+
+        /* Solutions Section */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .solution-card {
+            background: var(--color-fill);
+            border-radius: 20px;
+            padding: 40px 30px;
+            border: 1px solid var(--color-border);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0071e3, #40a0ff);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .solution-card h3 {
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .solution-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+        }
+
+        /* Leadership */
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .leader-card {
+            background: var(--color-fill);
+            border-radius: 20px;
+            padding: 36px;
+            border: 1px solid var(--color-border);
+            display: flex;
+            gap: 24px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .leader-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e8e8ed, #d2d2d7);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+        }
+
+        .leader-info h4 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .leader-info .leader-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-accent);
+            margin-bottom: 10px;
+        }
+
+        .leader-info p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+        }
+
+        /* Insights Section */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .insight-card {
+            background: var(--color-fill);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .insight-image {
+            height: 160px;
+            background: linear-gradient(135deg, #1a1a2e, #0071e3);
+            position: relative;
+        }
+
+        .insight-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .insight-content {
+            padding: 24px;
+        }
+
+        .insight-content h4 {
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .insight-meta {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+        }
+
+        /* Global Presence */
+        .locations-section {
+            text-align: center;
+        }
+
+        .locations-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 40px;
+        }
+
+        .location-tag {
+            padding: 8px 18px;
+            background: var(--color-fill);
+            border: 1px solid var(--color-border);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            transition: all 0.2s;
+        }
+
+        .location-tag:hover {
+            background: var(--color-accent);
+            color: #fff;
+            border-color: var(--color-accent);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(180deg, #000 0%, #1a1a2e 100%);
+            color: #fff;
+            text-align: center;
+            padding: 100px 22px;
+        }
+
+        .cta-section h2 {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 19px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 36px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--color-accent);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 100px;
+            font-size: 17px;
+            font-weight: 500;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .cta-button:hover {
+            background: var(--color-accent-hover);
+            transform: scale(1.02);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-fill-secondary);
+            border-top: 1px solid var(--color-border);
+            padding: 50px 22px 30px;
+        }
+
+        .footer-content {
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h5 {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col a {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: var(--color-link);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--color-border);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-social a {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-social a:hover {
+            color: var(--color-text);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .section-heading h2 {
+                font-size: 32px;
+            }
+
+            .cards-grid,
+            .values-grid,
+            .solutions-grid,
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .leadership-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-banner {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="global-nav">
+    <div class="nav-content">
+        <a href="#" class="nav-logo">Synpulse<span>8</span></a>
+        <ul class="nav-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Solutions</a></li>
+            <li><a href="#">Insights</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <p class="hero-eyebrow">WE INNOV8, IDE8, COLLABOR8, CO-CRE8</p>
+        <h1>We shape the future of financial services.</h1>
+        <p>For over 30 years, we've supported financial institutions across the globe in turning strategy into tangible, value-creating outcomes.</p>
+        <a href="#" class="hero-cta">Discover our industries</a>
+    </div>
+</section>
+
+<!-- Stats -->
+<section class="section">
+    <div class="stats-banner">
+        <div class="stat-item">
+            <div class="stat-number">30+</div>
+            <div class="stat-label">Years of Experience</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">1,000+</div>
+            <div class="stat-label">Experts Worldwide</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">100+</div>
+            <div class="stat-label">Ecosystem Partners</div>
+        </div>
+    </div>
+
+    <p style="font-size: 19px; line-height: 1.6; color: var(--color-text-secondary); text-align: center; max-width: 720px; margin: 0 auto;">
+        With over 1,000 experts, more than 100 ecosystem partners, and our technology division Synpulse8, we deliver innovative, end-to-end solutions designed to seamlessly integrate strategy, technology, and operations.
+    </p>
+</section>
+
+<!-- Culture & DNA -->
+<section class="section-full section-gray">
+    <div class="section" style="padding-top: 0; padding-bottom: 0;">
+        <div class="section-heading">
+            <h2>Culture and Values</h2>
+            <p>We bring together what matters most to deliver lasting impact.</p>
+        </div>
+
+        <div class="cards-grid" style="margin-bottom: 60px;">
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </div>
+                <h3>Deep Industry Expertise</h3>
+                <p>We have over two decades of industry insight, creating impact across our clients' entire value chain.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+                </div>
+                <h3>Innovative Methods</h3>
+                <p>We constantly evolve how we work, using proven methods and home-grown tools like SPEEDmethod® and NEOINSURANCE®.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                </div>
+                <h3>Collaborative Culture</h3>
+                <p>We are inclusive, nimble, and powered by people, building strong relationships with clients, partners and each other.</p>
+            </div>
+        </div>
+
+        <div class="section-heading">
+            <h2 style="font-size: 32px;">Our Values</h2>
+            <p>At Synpulse, our culture is built on a simple principle: people first.</p>
+        </div>
+
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-emoji">🤝</div>
+                <h4>Embrace</h4>
+                <p>We work as partners, meeting on equal terms, listening actively, and building trust through collaboration.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-emoji">🚀</div>
+                <h4>Drive</h4>
+                <p>We energise bold ideas, taking initiative, challenging the status quo, and pushing forward with passion.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-emoji">🎯</div>
+                <h4>Achieve</h4>
+                <p>We deliver tangible results, implementing concepts, executing strategies, and making transformation happen.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Solutions -->
+<section class="section">
+    <div class="section-heading">
+        <h2>What We Do</h2>
+        <p>End-to-end solutions that drive growth, resilience, and lasting impact in the digital economy.</p>
+    </div>
+
+    <div class="solutions-grid">
+        <div class="solution-card">
+            <h3>Technology Advisory</h3>
+            <p>Keep it simple, but do it smart. We help you understand where your business is today and where your digital business is heading. Our guidance is designed to help you think differently, do more and do it better, faster, and more effectively.</p>
+        </div>
+        <div class="solution-card">
+            <h3>Ecosystem Partner Implementation</h3>
+            <p>We're walking the walk with our network of ecosystem partners to provide you with deep insights and the right mix of digital solutions that answer your challenges.</p>
+        </div>
+        <div class="solution-card">
+            <h3>Bespoke Software</h3>
+            <p>We specialise in the execution of your digital journey at each step of the process, from design and development to the implementation of integrated bespoke software tailored to your organisation's needs.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Insights -->
+<section class="section-full section-gray">
+    <div class="section" style="padding-top: 0; padding-bottom: 0;">
+        <div class="section-heading">
+            <h2>Insights & Thought Leadership</h2>
+            <p>Explore articles, case studies, and industry trends to inspire your transformation journey.</p>
+        </div>
+
+        <div class="insights-grid">
+            <div class="insight-card">
+                <div class="insight-image" style="background: linear-gradient(135deg, #1a1a2e, #4a00e0);">
+                    <span class="insight-badge">Insights</span>
+                </div>
+                <div class="insight-content">
+                    <h4>From Keywords to Context: Improving Strapi with AI-Powered Semantic Search</h4>
+                    <p class="insight-meta">4-min read · 11 Mar 2026</p>
+                </div>
+            </div>
+            <div class="insight-card">
+                <div class="insight-image" style="background: linear-gradient(135deg, #0f2027, #203a43);">
+                    <span class="insight-badge">Insights</span>
+                </div>
+                <div class="insight-content">
+                    <h4>PULSE8 Opens Source Code for AI Chat UI Library</h4>
+                    <p class="insight-meta">4-min read · 3 Mar 2026</p>
+                </div>
+            </div>
+            <div class="insight-card">
+                <div class="insight-image" style="background: linear-gradient(135deg, #141e30, #243b55);">
+                    <span class="insight-badge">Insights</span>
+                </div>
+                <div class="insight-content">
+                    <h4>Prevent LLM Format Errors with the Adaptive Anti-Corruption Layer</h4>
+                    <p class="insight-meta">5-min read · 12 Nov 2025</p>
+                </div>
+            </div>
+            <div class="insight-card">
+                <div class="insight-image" style="background: linear-gradient(135deg, #0c0c1d, #1a237e);">
+                    <span class="insight-badge">Insights</span>
+                </div>
+                <div class="insight-content">
+                    <h4>Virtual Banking: Why Thinking Ahead Will Help Banks to Stay Ahead</h4>
+                    <p class="insight-meta">3-min read · 11 Aug 2025</p>
+                </div>
+            </div>
+            <div class="insight-card">
+                <div class="insight-image" style="background: linear-gradient(135deg, #1a2a6c, #b21f1f);">
+                    <span class="insight-badge">Insights</span>
+                </div>
+                <div class="insight-content">
+                    <h4>Retail Multibanking: Success Factors Revealed</h4>
+                    <p class="insight-meta">2-min read · 10 Jun 2025</p>
+                </div>
+            </div>
+            <div class="insight-card">
+                <div class="insight-image" style="background: linear-gradient(135deg, #0f0c29, #302b63);">
+                    <span class="insight-badge">Insights</span>
+                </div>
+                <div class="insight-content">
+                    <h4>Smart Cash Pairing: A Solution to Ease the Cash Management Burden for Reinsurers</h4>
+                    <p class="insight-meta">5-min read · 10 Apr 2025</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Leadership -->
+<section class="section">
+    <div class="section-heading">
+        <h2>Our Leadership</h2>
+        <p>A diverse, experienced team of global partners and managing directors ready to support your transformation anywhere in the world.</p>
+    </div>
+
+    <div class="leadership-grid">
+        <div class="leader-card">
+            <div class="leader-avatar">SW</div>
+            <div class="leader-info">
+                <h4>Salomon Wettstein</h4>
+                <div class="leader-title">Managing Partner, CEO Synpulse8</div>
+                <p>Salomon leads Synpulse's North Asia market and serves as Co-CEO of Synpulse8, driving growth strategies, business transformation, and digital innovation across APAC, Greater China, and global markets.</p>
+            </div>
+        </div>
+        <div class="leader-card">
+            <div class="leader-avatar">RB</div>
+            <div class="leader-info">
+                <h4>Raphael Bianchi</h4>
+                <div class="leader-title">Senior Partner, CEO Synpulse8</div>
+                <p>Raphael is Co-CEO of Synpulse8, driving private and retail banking consulting while leading digital transformation and fintech system implementations.</p>
+            </div>
+        </div>
+        <div class="leader-card">
+            <div class="leader-avatar">FW</div>
+            <div class="leader-info">
+                <h4>Fraser Wilkie</h4>
+                <div class="leader-title">Executive Director, Head of Design, Asia</div>
+                <p>Fraser leads design strategy and delivery across Asia with over 20 years of experience crafting digital solutions for financial services globally.</p>
+            </div>
+        </div>
+        <div class="leader-card">
+            <div class="leader-avatar">SA</div>
+            <div class="leader-info">
+                <h4>Simon Alioth</h4>
+                <div class="leader-title">Managing Director, Head of Open Finance</div>
+                <p>Simon leads Synpulse8's Swiss organisation and its banking and wealth management product portfolio with a strong focus on connectivity and integration.</p>
+            </div>
+        </div>
+        <div class="leader-card">
+            <div class="leader-avatar">FC</div>
+            <div class="leader-info">
+                <h4>Felix Chong</h4>
+                <div class="leader-title">Executive Director, Head of Delivery North Asia</div>
+                <p>Felix specialises in agile methodologies, software development, and large-scale integration projects with over 20 years of experience in IT delivery.</p>
+            </div>
+        </div>
+        <div class="leader-card">
+            <div class="leader-avatar">JP</div>
+            <div class="leader-info">
+                <h4>Jieke Pan</h4>
+                <div class="leader-title">Chief Technology Officer</div>
+                <p>Jieke leads the global technology vision and engineering strategy, driving the PULSE8 platform's evolution with scalable, AI-enabled solutions.</p>
+            </div>
+        </div>
+        <div class="leader-card">
+            <div class="leader-avatar">MF</div>
+            <div class="leader-info">
+                <h4>Marco Flury</h4>
+                <div class="leader-title">Managing Director, CIO</div>
+                <p>Marco oversees global IT strategy, infrastructure, and security, driving innovation and resilience across Synpulse8's digital ecosystem.</p>
+            </div>
+        </div>
+        <div class="leader-card">
+            <div class="leader-avatar">MT</div>
+            <div class="leader-info">
+                <h4>Manuel Thomet</h4>
+                <div class="leader-title">Associate Partner, Head Embedded Finance & BaaS</div>
+                <p>Manuel leads the embedded finance and BaaS topic, helping banks and non-financial brands unlock the economic potential of next-generation business models.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Global Presence -->
+<section class="section-full section-gray">
+    <div class="section locations-section" style="padding-top: 0; padding-bottom: 0;">
+        <div class="section-heading">
+            <h2>Global Reach, Local Presence</h2>
+            <p>Our teams are ready to support your transformation anywhere in the world.</p>
+        </div>
+
+        <div class="locations-grid">
+            <span class="location-tag">Bangkok</span>
+            <span class="location-tag">Bratislava</span>
+            <span class="location-tag">Dubai</span>
+            <span class="location-tag">Düsseldorf</span>
+            <span class="location-tag">Geneva</span>
+            <span class="location-tag">Hong Kong</span>
+            <span class="location-tag">Hyderabad</span>
+            <span class="location-tag">Jakarta</span>
+            <span class="location-tag">Kuala Lumpur</span>
+            <span class="location-tag">London</span>
+            <span class="location-tag">Luxembourg</span>
+            <span class="location-tag">Manila</span>
+            <span class="location-tag">New York</span>
+            <span class="location-tag">Pune</span>
+            <span class="location-tag">Shenzhen</span>
+            <span class="location-tag">Singapore</span>
+            <span class="location-tag">Sydney</span>
+            <span class="location-tag">Taipei</span>
+            <span class="location-tag">Toronto</span>
+            <span class="location-tag">Ulm</span>
+            <span class="location-tag">Zurich</span>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <h2>Start your inquiry now</h2>
+    <p>We'll get back to you soonest.</p>
+    <a href="#" class="cta-button">Get in Touch</a>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h5>Solutions</h5>
+                <ul>
+                    <li><a href="#">Technology Advisory</a></li>
+                    <li><a href="#">Ecosystem Partners</a></li>
+                    <li><a href="#">Bespoke Software</a></li>
+                    <li><a href="#">Open Finance</a></li>
+                    <li><a href="#">Embedded Finance</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Industries</h5>
+                <ul>
+                    <li><a href="#">Banking</a></li>
+                    <li><a href="#">Insurance</a></li>
+                    <li><a href="#">Wealth Management</a></li>
+                    <li><a href="#">Fintech</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Company</h5>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Insights</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Legal</h5>
+                <ul>
+                    <li><a href="#">Legal Information</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Synpulse8. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="#">LinkedIn</a>
+                <a href="#">YouTube</a>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">X</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
